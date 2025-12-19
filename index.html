@@ -386,6 +386,27 @@ It is used to:
 
 
 
+<span class="err">#</span> <span class="n">Bookings</span>
+
+<span class="err">##</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">Booking</span>
+
+<span class="err">```</span><span class="n">csharp</span>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">();</span>
+
+<span class="kt">var</span> <span class="n">bookingData</span> <span class="p">=</span> <span class="k">new</span>
+<span class="p">{</span>
+    <span class="n">UserId</span> <span class="p">=</span> <span class="m">101</span><span class="p">,</span>       <span class="c1">// From TblLogin</span>
+    <span class="n">HallId</span> <span class="p">=</span> <span class="m">5</span><span class="p">,</span>         <span class="c1">// From TblHall</span>
+    <span class="n">EventStartDate</span> <span class="p">=</span> <span class="s">"2025-11-22"</span><span class="p">,</span>
+    <span class="n">EventEndDate</span> <span class="p">=</span> <span class="s">"2025-11-22"</span><span class="p">,</span>
+    <span class="n">Time</span> <span class="p">=</span> <span class="s">"PM"</span>         <span class="c1">// AM, PM, or FullDay</span>
+<span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">json</span> <span class="p">=</span> <span class="n">JsonSerializer</span><span class="p">.</span><span class="nf">Serialize</span><span class="p">(</span><span class="n">bookingData</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">content</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringContent</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+
+<span class="c1">// POST request to create a booking</span>
+<span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">PostAsync</span><span class="p">(</span><span class="s">"https://localhost:5001/api/bookings"</span><span class="p">,</span> <span class="n">content</span><span class="p">);</span>
 </code></pre></div><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
