@@ -73,3 +73,24 @@ var response = await client.PostAsync("https://localhost:5001/api/bookings", con
 
 
 
+# Bookings
+
+## Create a Booking
+
+```csharp
+var client = new HttpClient();
+
+var bookingData = new
+{
+    UserId = 101,       // From TblLogin
+    HallId = 5,         // From TblHall
+    EventStartDate = "2025-11-22",
+    EventEndDate = "2025-11-22",
+    Time = "PM"         // AM, PM, or FullDay
+};
+
+var json = JsonSerializer.Serialize(bookingData);
+var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+// POST request to create a booking
+var response = await client.PostAsync("https://localhost:5001/api/bookings", content);
