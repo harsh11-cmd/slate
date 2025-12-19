@@ -19,6 +19,7 @@ Welcome to the **Banquet Hall Booking Management System API**.
 
 This API allows the frontend (Web or Mobile) to communicate with the .NET Core Backend.
 It is used to:
+
 * Search for Halls
 * Make Bookings
 * Process Payments
@@ -31,5 +32,6 @@ It is used to:
 
 ```csharp
 var client = new HttpClient();
+
 // Add the Bearer Token to the header
 client.DefaultRequestHeaders.Add("Authorization", "Bearer YOUR_ACCESS_TOKEN");
