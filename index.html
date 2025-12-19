@@ -305,7 +305,7 @@
     <div class="toc-wrapper">
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="csharp">C#</a>
+              <a href="#" data-language-name="csharp">C# (.NET)</a>
               <a href="#" data-language-name="json">JSON</a>
         </div>
         <div class="search">
@@ -343,55 +343,13 @@ It is used to:
 <p>To authorize, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">();</span>
+<span class="c1">// Add the Bearer Token to the header</span>
 <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Bearer YOUR_ACCESS_TOKEN"</span><span class="p">);</span>
-
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">();</span>
-<span class="c1">// Request to your .NET Core API</span>
-<span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">"https://localhost:5001/api/halls"</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">content</span> <span class="p">=</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="nf">ReadAsStringAsync</span><span class="p">();</span>
-
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">();</span>
-
-<span class="kt">var</span> <span class="n">bookingData</span> <span class="p">=</span> <span class="k">new</span>
-<span class="p">{</span>
-    <span class="n">UserId</span> <span class="p">=</span> <span class="m">101</span><span class="p">,</span>       <span class="c1">// From TblLogin</span>
-    <span class="n">HallId</span> <span class="p">=</span> <span class="m">5</span><span class="p">,</span>         <span class="c1">// From TblHall</span>
-    <span class="n">EventStartDate</span> <span class="p">=</span> <span class="s">"2025-11-22"</span><span class="p">,</span>
-    <span class="n">EventEndDate</span> <span class="p">=</span> <span class="s">"2025-11-22"</span><span class="p">,</span>
-    <span class="n">Time</span> <span class="p">=</span> <span class="s">"PM"</span>         <span class="c1">// AM, PM, or FullDay</span>
-<span class="p">};</span>
-
-<span class="kt">var</span> <span class="n">json</span> <span class="p">=</span> <span class="n">JsonSerializer</span><span class="p">.</span><span class="nf">Serialize</span><span class="p">(</span><span class="n">bookingData</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">content</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringContent</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-
-<span class="c1">// POST request to create a booking</span>
-<span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">PostAsync</span><span class="p">(</span><span class="s">"https://localhost:5001/api/bookings"</span><span class="p">,</span> <span class="n">content</span><span class="p">);</span>
-
-
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">();</span>
-
-<span class="kt">var</span> <span class="n">paymentData</span> <span class="p">=</span> <span class="k">new</span>
-<span class="p">{</span>
-    <span class="n">BookingId</span> <span class="p">=</span> <span class="m">45</span><span class="p">,</span>     <span class="c1">// The ID we got from the Booking step</span>
-    <span class="n">Amount</span> <span class="p">=</span> <span class="m">5000</span><span class="p">,</span>
-    <span class="n">PaymentMethod</span> <span class="p">=</span> <span class="s">"UPI"</span><span class="p">,</span>
-    <span class="n">UpiId</span> <span class="p">=</span> <span class="s">"user@oksbi"</span>
-<span class="p">};</span>
-
-<span class="kt">var</span> <span class="n">json</span> <span class="p">=</span> <span class="n">JsonSerializer</span><span class="p">.</span><span class="nf">Serialize</span><span class="p">(</span><span class="n">paymentData</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">content</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringContent</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">PostAsync</span><span class="p">(</span><span class="s">"https://localhost:5001/api/payments"</span><span class="p">,</span> <span class="n">content</span><span class="p">);</span>
-
-
 </code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="csharp">C#</a>
+                <a href="#" data-language-name="csharp">C# (.NET)</a>
                 <a href="#" data-language-name="json">JSON</a>
           </div>
       </div>
