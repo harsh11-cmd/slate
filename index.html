@@ -332,10 +332,13 @@
 <p>Welcome to the <strong>Banquet Hall Booking Management System API</strong>.</p>
 
 <p>This API allows the frontend (Web or Mobile) to communicate with the .NET Core Backend.
-It is used to:
-* Search for Halls
-* Make Bookings
-* Process Payments</p>
+It is used to:</p>
+
+<ul>
+<li>Search for Halls</li>
+<li>Make Bookings</li>
+<li>Process Payments</li>
+</ul>
 
 <p><strong>Base URL:</strong> <code>https://localhost:5001/api</code></p>
 <h1 id='authentication'>Authentication</h1>
@@ -343,6 +346,7 @@ It is used to:
 <p>To authorize, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpClient</span><span class="p">();</span>
+
 <span class="c1">// Add the Bearer Token to the header</span>
 <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Bearer YOUR_ACCESS_TOKEN"</span><span class="p">);</span>
 </code></pre></div>
