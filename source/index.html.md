@@ -46,3 +46,30 @@ var client = new HttpClient();
 // Request to your .NET Core API
 var response = await client.GetAsync("https://localhost:5001/api/halls");
 var content = await response.Content.ReadAsStringAsync();
+
+
+
+
+# Bookings
+
+## Create a Booking
+
+```csharp
+var client = new HttpClient();
+
+var bookingData = new
+{
+    UserId = 101,       // From TblLogin
+    HallId = 5,         // From TblHall
+    EventStartDate = "2025-11-22",
+    EventEndDate = "2025-11-22",
+    Time = "PM"         // AM, PM, or FullDay
+};
+
+var json = JsonSerializer.Serialize(bookingData);
+var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+var response = await client.PostAsync("https://localhost:5001/api/bookings", content);
+
+
+
