@@ -35,3 +35,4 @@ var client = new HttpClient();
 
 // Add the Bearer Token to the header
 client.DefaultRequestHeaders.Add("Authorization", "Bearer YOUR_ACCESS_TOKEN");
+```
