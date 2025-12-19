@@ -34,3 +34,15 @@ It is used to:
 ```csharp
 var client = new HttpClient();
 client.DefaultRequestHeaders.Add("Authorization", "Bearer YOUR_ACCESS_TOKEN");
+
+
+
+# Halls
+
+## Get All Halls
+
+```csharp
+var client = new HttpClient();
+// Request to your .NET Core API
+var response = await client.GetAsync("https://localhost:5001/api/halls");
+var content = await response.Content.ReadAsStringAsync();
